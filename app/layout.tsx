@@ -20,7 +20,7 @@ export default function RootLayout({
       <Link href="/blog">blog</Link>
     </nav>
       {children}
-      <footer><div>it's</div><div>like</div><div>that</div></footer>
+      <footer><div>its</div><div>like</div><div>that</div></footer>
       </body>
     </html>
   )

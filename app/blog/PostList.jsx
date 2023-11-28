@@ -1,25 +1,27 @@
-async function getPosts() {
-  const res = await fetch('http://localhost:4000/posts',
-    {
-      next: {
-        revalidate: 60 //seconds
-      }
-    }
-  )
+import Link from "next/link";
 
-  return res.json()
+async function getPosts() {
+  const res = await fetch("http://localhost:4000/posts", {
+    next: {
+      revalidate: 60, //seconds
+    },
+  });
+
+  return res.json();
 }
 export default async function PostList() {
-  const posts = await getPosts()
+  const posts = await getPosts();
 
   return (
-    <>
+    <ul>
       {posts.map((post) => (
-        <div key={post.id}>
-          {post.title}
-          {post.body.slice(0, 200)}
-        </div>
+        <li key={post.id}>
+          <Link href={`/blog/${post.id}`}>
+            {post.title}
+            {post.body.slice(0, 200)}
+          </Link>
+        </li>
       ))}
-    </>
-  )
+    </ul>
+  );
 }
