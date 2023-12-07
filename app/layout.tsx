@@ -18,6 +18,7 @@ export default function RootLayout({
     <nav>
       <Link href="/">home</Link>
       <Link href="/blog">blog</Link>
+      <Link href="/todos">todos</Link>
     </nav>
       {children}
       <footer><div>its</div><div>like</div><div>that</div></footer>
