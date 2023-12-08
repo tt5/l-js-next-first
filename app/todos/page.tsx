@@ -1,15 +1,20 @@
 "use client";
+import { useRef} from 'react';
 import { GetTodos } from '../action'
-import {useFormState} from 'react-dom'
+import {useFormState, useFormStatus} from 'react-dom'
 
 
-export default async function Todos() {
+
+export default function Todos() {
+  //const ref = useRef<HTMLFormElement>(null);
   const [state, dispatch] = useFormState(GetTodos, {text: "mytext"})
+  const {pending} = useFormStatus()
+  const form = useRef<HTMLFormElement>(null);
 
   return <main>
-    <form action={dispatch}>
-    <input name="text"></input>
-    <button>Create Todo</button>
+    <form action={dispatch} ref={form}>
+    <input name="text"/>
+    <button disabled={pending} onClick={form.current?.reset() as any}>Create Todo</button>
     </form>
     {state.text}
   </main>;

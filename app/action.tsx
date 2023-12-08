@@ -13,7 +13,8 @@ pipeline(socket, db.createRpcStream(), socket, () => {
 
 export async function GetTodos(
   prevState: {text: string},
-  formData: FormData) {
+  formData: FormData, 
+  ) {
   const text = formData.get("text") as string;
   await db.put("text", text)
   console.log(text)
