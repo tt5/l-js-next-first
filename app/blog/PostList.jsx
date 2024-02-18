@@ -3,7 +3,7 @@ import Link from "next/link";
 async function getPosts() {
   const res = await fetch("http://localhost:4000/posts", {
     next: {
-      revalidate: 60, //seconds
+      revalidate: 0, //seconds
     },
   });
 
